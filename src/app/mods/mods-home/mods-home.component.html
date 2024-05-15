@@ -1,1 +1,32 @@
-<p>mods-home works!</p>
+<app-divider>
+    Modal
+</app-divider>
+
+<button (click)="onClick()">Show Modal</button>
+<app-modal (closeModal)="onClick()"  *ngIf="showModal">
+    <ng-container header>
+        This is the Modal Title
+    </ng-container>
+    <ng-container image>
+        <img src="/assets/rachel.png">
+    </ng-container>
+    
+    <ng-container desc-header>
+        Description Title
+    </ng-container>
+    <ng-container desc-content>
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.
+    </ng-container>
+    <ng-container modal-footer>
+        <div (click)="onClick()" class="ui positive right labeled icon button">
+            Yes !
+            <i class="checkmark icon"></i>
+        </div>
+    </ng-container>
+    
+</app-modal>
+
+<app-divider>
+    Accordion
+</app-divider>
+<app-accordion [articles] = "articles" ></app-accordion>

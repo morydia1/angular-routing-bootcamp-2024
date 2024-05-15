@@ -1,0 +1,32 @@
+
+<div (click)="onCloseModal()" class="ui dimmer visible active">
+    <div (click)="$event.stopPropagation()" class=" ui modal visible active">
+    <i (click)="onCloseModal()" class="close icon"></i>
+    <div class="header">
+        <ng-content select="[header]"></ng-content>
+    </div>
+    <div class="image content">
+      <div class="ui medium image">
+        <ng-content select="[image]"></ng-content>
+      </div>
+      <div class="description">
+        <div class="ui header">
+            <ng-content select="[desc-header]"></ng-content>
+        </div>
+        <ng-content select="[desc-content]"></ng-content>
+      </div>
+    </div>
+    <div class="actions">
+        <ng-content select="[modal-footer]"></ng-content>
+    </div>
+    <div class="actions actions-default">
+      <div class="ui black deny button" (click)="onCloseModal()">
+        Nope
+      </div>
+      <div class="ui positive right labeled icon button">
+        Yep, that's me
+        <i (click)="onCloseModal()" class="checkmark icon"></i>
+      </div>
+    </div>
+    </div>
+  </div>

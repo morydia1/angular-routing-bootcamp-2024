@@ -1,0 +1,27 @@
+.header:empty{
+    display: none;
+}
+
+.ui.medium.image:empty{
+    display: none;
+}
+
+.ui.header:empty{
+    display: none;
+}
+
+.description:empty{
+    display: none;
+}
+
+.actions:empty{
+    display: none;
+}
+
+.actions-default{
+    display: none;
+}
+
+.actions:empty + .actions-default {
+    display: block;
+}

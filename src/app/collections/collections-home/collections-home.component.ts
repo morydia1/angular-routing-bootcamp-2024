@@ -18,4 +18,4 @@ export class CollectionsHomeComponent {
     {key: 'age', label: 'Age'},
     {key: 'job', label: 'Job'}
   ]
-}
+}  
