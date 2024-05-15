@@ -20,7 +20,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule
   ],
   exports: [
-    ModsHomeComponent
+    ModalComponent
   ]
 })
 export class ModsModule { }

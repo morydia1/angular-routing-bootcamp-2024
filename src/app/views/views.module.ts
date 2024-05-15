@@ -19,8 +19,6 @@ import { SharedModule } from '../shared/shared.module';
     ViewRoutingModule,
     SharedModule
   ],
-  exports: [
-    ViewsHomeComponent
-  ]
+  exports: []
 })
 export class ViewsModule { }

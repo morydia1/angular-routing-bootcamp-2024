@@ -7,6 +7,7 @@ import { PlaceholderComponent } from './placeholder/placeholder.component';
 import { TimesDirective } from './times.directive';
 import { SharedModule } from '../shared/shared.module';
 import { SegmentComponent } from './segment/segment.component';
+import { ModsModule } from '../mods/mods.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { SegmentComponent } from './segment/segment.component';
   imports: [
     CommonModule,
     ElementsRoutingModule,
-    SharedModule
+    SharedModule,
+    ModsModule
   ],
   exports : []
 })

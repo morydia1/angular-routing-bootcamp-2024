@@ -21,5 +21,42 @@
         <i class="add icon"></i>
         Add more ressources.
     </header>
-    <div class="ui primary button">Click to Add</div>
+    <div (click)="onAdd()" class="ui primary button">Click to Add</div>
 </app-segment>
+
+<app-modal (closeModal)="onAdd()"  *ngIf="showModal">
+    <ng-container header>
+        Document Upload
+    </ng-container>
+    <ng-container image>
+        <div>
+            <label for="file" class="ui icon button">
+                <i class="file icon"></i>
+                Upload File</label>
+            <input type="file" id="file" style="display:none">
+        </div>
+    </ng-container>
+    
+    <ng-container desc-header>
+        Document Name
+    </ng-container>
+    <ng-container modal-footer>
+        <div class="ui black deny button" (click)="onAdd()">
+            Cancel
+          </div>
+        <div (click)="onLoad()" class="ui positive right labeled icon button">
+            Load
+            <i class="checkmark icon"></i>
+        </div>
+    </ng-container>
+    <ng-container image>
+        <div *ngIf="load" class="ui loading form">
+            <div class="field">
+              <label>E-mail</label>
+              <input type="email" placeholder="joe@schmoe.com">
+            </div>
+            <div class="ui submit button">Submit</div>
+          </div>
+    </ng-container>
+
+</app-modal>

@@ -1,3 +1,4 @@
+
 .header:empty{
     display: none;
 }
@@ -24,4 +25,14 @@
 
 .actions:empty + .actions-default {
     display: block;
+}
+.ui.dimmer.active{  
+    top: 0px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px ;
+	right: 0px;
+	width: 100% !important;
+	height: 100% !important;
+	margin: 0 !important;
 }
