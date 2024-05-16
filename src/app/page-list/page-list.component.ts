@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-page-list',
@@ -6,5 +6,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./page-list.component.css']
 })
 export class PageListComponent {
+
+  @Input()
+  articles: {
+    title: string,
+    wordCount: number,
+    snippet: string
+  }[] = [];
+
+
 
 }

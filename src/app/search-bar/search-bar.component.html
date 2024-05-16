@@ -1,6 +1,5 @@
-<div class="ui form">
+<form (submit)="onSubmit($event)" class="ui form">
     <div class="field">
-      <label>User Input</label>
-      <input type="text">
+      <input (input)="onInput($event)" type="text">
     </div>
-</div>
+</form>
