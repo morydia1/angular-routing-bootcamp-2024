@@ -1,1 +1,16 @@
-<p>page-list works!</p>
+<table class="ui fixed table">
+    <thead>
+      <tr><th>Title</th>
+      <th>wordCount</th>
+      <th>Snippet</th>
+    </tr></thead>
+    <tbody>
+      <tr *ngFor="let ar of articles">
+        <td> <a target="_blank" [href]=" 'https://en.wikipedia.org?curid='+ar.pageid ">
+            {{ ar.title }} 
+        </a></td>
+        <td>{{ ar.wordcount }}</td>
+        <td [innerHtml]="ar.snippet"> </td>
+      </tr>
+    </tbody>
+  </table>

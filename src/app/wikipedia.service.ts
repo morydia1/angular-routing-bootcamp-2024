@@ -1,14 +1,41 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs';
+
+interface WikipediaResponse{
+  query: {
+    search: PageContent[];
+  };
+}
+
+export interface PageContent{
+  title: string,
+  wordcount: number,
+  snippet: string,
+  pageid: string
+}[]
 
 @Injectable({
   providedIn: 'root'
 })
 export class WikipediaService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  request: string = 'https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch=Nelson%20Mandela&utf8=&format=json';
+  apiUrl: string = 'https://en.wikipedia.org/w/api.php';
+
   public search(term: string){
-    return this.request;
+    return this.http.get<WikipediaResponse>(this.apiUrl,{
+      params: {
+        action: 'query',
+        list: 'search',
+        srsearch: term,
+        utf8: '1',
+        format: 'json',
+        origin: '*'
+      }
+    }).pipe(
+      map((value) => value.query.search)
+    );
   }
 }

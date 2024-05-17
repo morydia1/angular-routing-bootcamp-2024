@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { WikipediaService } from './wikipedia.service';
+import { PageContent, WikipediaService } from './wikipedia.service';
 
 @Component({
   selector: 'app-root',
@@ -9,11 +9,14 @@ import { WikipediaService } from './wikipedia.service';
 export class AppComponent {
   title = 'bootcamp-rooting';
   term: string = '';
+  pages: PageContent[] = [];
 
   constructor(private wikiService: WikipediaService){}
 
   onSubmitted(term: string){
-    const results: string = this.wikiService.search(term);
+    this.wikiService.search(term).subscribe( pages => {
+      this.pages = pages;
+    })
 
   }
 

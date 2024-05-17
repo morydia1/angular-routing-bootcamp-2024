@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PageContent } from '../wikipedia.service';
 
 @Component({
   selector: 'app-page-list',
@@ -8,12 +9,6 @@ import { Component, Input } from '@angular/core';
 export class PageListComponent {
 
   @Input()
-  articles: {
-    title: string,
-    wordCount: number,
-    snippet: string
-  }[] = [];
-
-
+  articles: PageContent[] = [];
 
 }
