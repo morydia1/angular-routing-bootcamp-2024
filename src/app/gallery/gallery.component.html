@@ -1,0 +1,9 @@
+<div class="ui container">
+    <div>
+        <button (click)="onClick()"   class="ui button">Next Image</button>
+    </div>
+    <div class="ui divider"></div>
+    
+    <img *ngIf="photoUrl" [src]="photoUrl" alt="">
+    
+</div>
