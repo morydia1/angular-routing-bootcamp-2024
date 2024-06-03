@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'bootcamp-rooting';
+
+  email = '';
+
+  onSubmit(){
+    console.log(this.email)
+  }
 }
