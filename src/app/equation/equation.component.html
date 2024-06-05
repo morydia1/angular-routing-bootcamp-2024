@@ -1,0 +1,9 @@
+
+<form [formGroup]="mathForm">
+    <div class="equation"> {{ a }} + {{ b }} = </div>
+    <input [ngClass]="{'highlight': answerAccuracy() >= 0.8 }" formControlName="answer">
+</form>
+
+<div class="stats">
+    {{ frequenceAnswer | number: '1.1-3' }}
+</div>
