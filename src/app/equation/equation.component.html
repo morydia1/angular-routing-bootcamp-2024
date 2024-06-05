@@ -1,7 +1,7 @@
 
 <form [formGroup]="mathForm">
     <div class="equation"> {{ a }} + {{ b }} = </div>
-    <input [ngClass]="{'highlight': answerAccuracy() >= 0.8 }" formControlName="answer">
+    <input appAnswerHighLight formControlName="answer">
 </form>
 
 <div class="stats">

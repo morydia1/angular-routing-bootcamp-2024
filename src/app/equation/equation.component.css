@@ -27,6 +27,11 @@ input:focus {
     font-size: 24px;
 }
 
-.highlight{
+.highlight, .close{
     background-color: rgb(208, 247, 219);
 }
+
+.far{
+    background-color: rgb(246, 143, 143);
+}
+
