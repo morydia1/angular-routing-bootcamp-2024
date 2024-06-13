@@ -1,1 +1,24 @@
-<p>input works!</p>
+<div class="field">
+    <label>{{ label }}</label>
+    <input [type]="inputType" [formControl]="control" />
+</div>
+<div *ngIf="showErrors()" class="ui pointing red basic label">
+    <p *ngIf="control.errors && control.errors['required']">
+        {{ label }} is required
+    </p>
+    <p *ngIf="control.errors && control.errors['minlength']">
+        Must be at least {{ control.errors['minlength'].requiredLength}} chars
+    </p>
+    <p *ngIf="control.errors && control.errors['maxlength']">
+        Must be less than {{ control.errors['maxlength'].requiredLength}} chars
+    </p>
+    <p *ngIf="control.errors && control.errors['pattern']">
+        Invalid Format
+    </p>
+    <p *ngIf="control.errors && control.errors['noUniqueUsername']">
+        Username already Exists
+    </p>
+    <p *ngIf="control.errors && control.errors['password']">
+        {{ control.errors['password'].errorMessage }}
+    </p>
+</div>
