@@ -3,7 +3,8 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, tap } from "rxjs"
 
 interface UniqueUsernameResponse {
-    available: true
+    available: true;
+    username: string;
 }
 
 interface SignupResponse {
@@ -14,6 +15,11 @@ interface SignedinResponse {
     authenticated: boolean;
     username: string;
 }
+
+interface SigninResponse {
+    username: string;
+}
+
 export interface SignupCredential {
     username: string;
     password: string;
@@ -25,10 +31,11 @@ export interface SigninCredentials {
     password: string;
 }
 
-@Injectable({ providedIn: 'root'} )
+@Injectable({ providedIn: 'root' })
 export class AuthService {
 
-    signedIn$ = new BehaviorSubject(false);
+    signedIn$ = new BehaviorSubject<any>(null);
+    username = '';
 
     constructor(private http: HttpClient){}
 
@@ -36,23 +43,25 @@ export class AuthService {
 
     usernameExists(username: string){
         return this.http.post<UniqueUsernameResponse>(
-            this.host+'/username', { username: username }
+            this.host+'/username', { username }
         )
     }
 
     signup(credentials: SignupCredential){
         return this.http.post<UniqueUsernameResponse>(
             `${this.host}/signup`, credentials).pipe(
-                tap(() => {
-                    this.signedIn$.next(true)
+                tap(({ username }) => {
+                    this.signedIn$.next(true);
+                    this.username = username;
                 })
             )
     }
 
     checkAuth(){
         return this.http.get<SignedinResponse>(`${this.host}/signedin`).pipe(
-            tap(({authenticated}) => {
-                this.signedIn$.next(authenticated)
+            tap(({authenticated, username}) => {
+                this.signedIn$.next(authenticated);
+                this.username = username;
             })
         )
     }
@@ -66,8 +75,12 @@ export class AuthService {
     }
 
     signin(credentials: SigninCredentials){
-        return this.http.post<any>(`${this.host}/signin`, credentials).pipe(
-            tap(() => this.signedIn$.next(true))
+        return this.http.post<SigninResponse>(
+            `${this.host}/signin`, credentials).pipe(
+            tap(({username}) => {
+                this.signedIn$.next(true);
+                this.username = username;
+            })
         )
     }
 }

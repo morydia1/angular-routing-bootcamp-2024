@@ -3,6 +3,7 @@ import { AsyncValidatorFn, FormControl, FormGroup, Validators } from '@angular/f
 import { MatchPassword } from './../Validators/match-password';
 import { UniqueUsername } from '../Validators/unique-username';
 import { AuthService, SignupCredential } from '../auth-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
@@ -13,7 +14,8 @@ export class SignupComponent {
 
   constructor(private matchPassword:MatchPassword,
     private uniqueUsername: UniqueUsername,
-    private authService: AuthService){}
+    private authService: AuthService,
+    private router: Router){}
 
   signupForm = new FormGroup({
     username: new FormControl('', [
@@ -45,6 +47,7 @@ onSubmit(){
   this.authService.signup(this.signupForm.value as SignupCredential).subscribe({
     next: (response) =>{
       console.log(response)
+      this.router.navigateByUrl('/');
     },
     error: (err) => {
       if(!err.status)
